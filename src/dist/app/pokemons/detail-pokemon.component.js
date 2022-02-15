@@ -10,28 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var mock_pokemons_1 = require("./mock-pokemons");
 var router_1 = require("@angular/router");
-var ListPokemonComponent = /** @class */ (function () {
-    function ListPokemonComponent(router) {
+var mock_pokemons_1 = require("./mock-pokemons");
+var DetailPokemonComponent = /** @class */ (function () {
+    function DetailPokemonComponent(route, router) {
+        this.route = route;
         this.router = router;
         this.pokemons = null;
+        this.pokemon = null;
     }
-    ListPokemonComponent.prototype.ngOnInit = function () {
+    DetailPokemonComponent.prototype.ngOnInit = function () {
         this.pokemons = mock_pokemons_1.POKEMONS;
+        var id = +this.route.snapshot.paramMap.get('id');
+        for (var i = 0; i < this.pokemons.length; i++) {
+            if (this.pokemons[i].id == id) {
+                this.pokemon = this.pokemons[i];
+            }
+        }
     };
-    ListPokemonComponent.prototype.selectPokemon = function (pokemon) {
-        var link = ['/pokemon', pokemon.id];
-        this.router.navigate(link);
+    DetailPokemonComponent.prototype.goBack = function () {
+        this.router.navigate(['/pokemons']);
     };
-    ListPokemonComponent = __decorate([
+    DetailPokemonComponent = __decorate([
         core_1.Component({
-            selector: 'list-pokemon',
-            templateUrl: './app/list-pokemon.component.html'
+            selector: 'detail-pokemon',
+            templateUrl: './app/pokemons/detail-pokemon.component.html'
         }),
-        __metadata("design:paramtypes", [router_1.Router])
-    ], ListPokemonComponent);
-    return ListPokemonComponent;
+        __metadata("design:paramtypes", [router_1.ActivatedRoute, router_1.Router])
+    ], DetailPokemonComponent);
+    return DetailPokemonComponent;
 }());
-exports.ListPokemonComponent = ListPokemonComponent;
-//# sourceMappingURL=list-pokemon.component.js.map
+exports.DetailPokemonComponent = DetailPokemonComponent;
+//# sourceMappingURL=detail-pokemon.component.js.map

@@ -27,7 +27,7 @@ var ListPokemonComponent = /** @class */ (function () {
     ListPokemonComponent = __decorate([
         core_1.Component({
             selector: 'list-pokemon',
-            templateUrl: './app/list-pokemon.component.html'
+            templateUrl: './app/pokemons/list-pokemon.component.html'
         }),
         __metadata("design:paramtypes", [router_1.Router])
     ], ListPokemonComponent);
