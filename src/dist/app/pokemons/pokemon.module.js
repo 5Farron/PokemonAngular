@@ -19,6 +19,7 @@ var loeader_component_1 = require("../loeader.component");
 var border_card_directive_1 = require("./border-card.directive");
 var pokemon_type_color_pipe_1 = require("./pokemon-type-color.pipe");
 var pokemons_service_1 = require("./pokemons.service");
+var auth_guard_service_1 = require("../auth-guard.service");
 var PokemonsModule = /** @class */ (function () {
     function PokemonsModule() {
     }
@@ -39,7 +40,7 @@ var PokemonsModule = /** @class */ (function () {
                 border_card_directive_1.BorderCardDirective,
                 pokemon_type_color_pipe_1.PokemonTypeColorPipe
             ],
-            providers: [pokemons_service_1.PokemonsService]
+            providers: [pokemons_service_1.PokemonsService, auth_guard_service_1.AuthGuard]
         })
     ], PokemonsModule);
     return PokemonsModule;

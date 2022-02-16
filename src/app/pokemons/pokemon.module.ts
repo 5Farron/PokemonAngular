@@ -12,6 +12,8 @@ import { LoaderComponent } from '../loeader.component';
 import { BorderCardDirective } from './border-card.directive';
 import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
 import { PokemonsService } from './pokemons.service';
+
+import { AuthGuard } from '../auth-guard.service';
   
 @NgModule({
     imports: [
@@ -29,6 +31,6 @@ import { PokemonsService } from './pokemons.service';
         BorderCardDirective,
         PokemonTypeColorPipe
     ],
-    providers: [PokemonsService]
+    providers: [PokemonsService, AuthGuard]
 })
 export class PokemonsModule { }
