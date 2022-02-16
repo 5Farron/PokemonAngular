@@ -13,15 +13,22 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var pokemons_service_1 = require("./pokemons.service");
 var DetailPokemonComponent = /** @class */ (function () {
-    function DetailPokemonComponent(route, router, pokemonsServices) {
+    function DetailPokemonComponent(route, router, pokemonsService) {
         this.route = route;
         this.router = router;
-        this.pokemonsServices = pokemonsServices;
+        this.pokemonsService = pokemonsService;
         this.pokemon = null;
     }
     DetailPokemonComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var id = +this.route.snapshot.paramMap.get('id');
-        this.pokemon = this.pokemonsServices.getPokemon(id);
+        this.pokemonsService.getPokemon(id)
+            .subscribe(function (pokemon) { return _this.pokemon = pokemon; });
+    };
+    DetailPokemonComponent.prototype.delete = function (pokemon) {
+        var _this = this;
+        this.pokemonsService.deletePokemon(pokemon)
+            .subscribe(function (_) { return _this.goBack(); });
     };
     DetailPokemonComponent.prototype.goBack = function () {
         this.router.navigate(['/pokemons']);

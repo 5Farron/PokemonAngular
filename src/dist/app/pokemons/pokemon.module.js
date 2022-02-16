@@ -8,15 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
 var pokemon_routing_module_1 = require("./pokemon-routing.module");
 var list_pokemon_component_1 = require("./list-pokemon.component");
 var detail_pokemon_component_1 = require("./detail-pokemon.component");
+var edit_pokemon_component_1 = require("./edit-pokemon.component");
+var pokemon_form_component_1 = require("./pokemon-form.component");
+var search_pokemon_component_1 = require("./search-pokemon.component");
+var loeader_component_1 = require("../loeader.component");
 var border_card_directive_1 = require("./border-card.directive");
 var pokemon_type_color_pipe_1 = require("./pokemon-type-color.pipe");
 var pokemons_service_1 = require("./pokemons.service");
-var forms_1 = require("@angular/forms");
-var edit_pokemon_component_1 = require("./edit-pokemon.component");
-var pokemon_form_component_1 = require("./pokemon-form.component");
 var PokemonsModule = /** @class */ (function () {
     function PokemonsModule() {
     }
@@ -32,6 +34,8 @@ var PokemonsModule = /** @class */ (function () {
                 detail_pokemon_component_1.DetailPokemonComponent,
                 edit_pokemon_component_1.EditPokemonComponent,
                 pokemon_form_component_1.PokemonFormComponent,
+                search_pokemon_component_1.PokemonSearchComponent,
+                loeader_component_1.LoaderComponent,
                 border_card_directive_1.BorderCardDirective,
                 pokemon_type_color_pipe_1.PokemonTypeColorPipe
             ],

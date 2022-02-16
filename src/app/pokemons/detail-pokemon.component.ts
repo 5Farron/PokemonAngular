@@ -14,11 +14,17 @@ export class DetailPokemonComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private pokemonsServices: PokemonsService) {}
+        private pokemonsService: PokemonsService) {}
   
     ngOnInit(): void {
         let id = +this.route.snapshot.paramMap.get('id');
-        this.pokemon = this.pokemonsServices.getPokemon(id);
+        this.pokemonsService.getPokemon(id)
+        .subscribe(pokemon => this.pokemon = pokemon);
+    }
+
+    delete(pokemon: Pokemon): void {
+        this.pokemonsService.deletePokemon(pokemon)
+        .subscribe(_ => this.goBack());
     }
   
     goBack(): void {
