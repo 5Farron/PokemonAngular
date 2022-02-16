@@ -13,7 +13,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'pokemon-app',
-            templateUrl: './app/app.component.html'
+            templateUrl: '/app/app.component.html'
         })
     ], AppComponent);
     return AppComponent;

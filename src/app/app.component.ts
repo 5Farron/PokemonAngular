@@ -4,6 +4,6 @@ import { POKEMONS } from './pokemons/mock-pokemons';
   
 @Component({
   selector: 'pokemon-app',
-  templateUrl: './app/app.component.html'
+  templateUrl: '/app/app.component.html'
 })
 export class AppComponent { }
