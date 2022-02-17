@@ -12,6 +12,8 @@ import { Pokemon } from './pokemon';
     templateUrl: '/app/pokemons/search-pokemon.component.html'
 })
 export class PokemonSearchComponent implements OnInit {
+
+    private pokemons: Pokemon[] = null;
    
     private searchTerms = new Subject<string>();
     pokemons$: Observable<Pokemon[]>;
@@ -34,10 +36,26 @@ export class PokemonSearchComponent implements OnInit {
             // on retourne la liste des résultats correpsondant aux termes de la recherche
             switchMap((term: string) => this.pokemonsService.searchPokemons(term)),
         );
+        this.getPokemons();
     }
+    getPokemons(): void {
+        this.pokemonsService.getPokemons()
+        .subscribe(pokemons => this.pokemons = pokemons);
+      }
    
     gotoDetail(pokemon: Pokemon): void {
         let link = ['/pokemon', pokemon.id];
         this.router.navigate(link);
+    }
+    selectPokemon(pokemon: Pokemon) {
+        let link = ['/pokemon', pokemon.id];
+        this.router.navigate(link);
+    }
+    delete(pokemon: Pokemon): void {
+        this.pokemonsService.deletePokemon(pokemon)
+        .subscribe(_ => this.goBack());
+    }
+    goBack(): void {
+        this.router.navigate(['/pokemon/all']);
     }
 }

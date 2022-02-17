@@ -18,6 +18,7 @@ var PokemonSearchComponent = /** @class */ (function () {
     function PokemonSearchComponent(pokemonsService, router) {
         this.pokemonsService = pokemonsService;
         this.router = router;
+        this.pokemons = null;
         this.searchTerms = new rxjs_1.Subject();
     }
     // Ajoute un terme de recherche dans le flux de l'Observable 'searchTerms'
@@ -33,10 +34,28 @@ var PokemonSearchComponent = /** @class */ (function () {
         operators_1.distinctUntilChanged(), 
         // on retourne la liste des résultats correpsondant aux termes de la recherche
         operators_1.switchMap(function (term) { return _this.pokemonsService.searchPokemons(term); }));
+        this.getPokemons();
+    };
+    PokemonSearchComponent.prototype.getPokemons = function () {
+        var _this = this;
+        this.pokemonsService.getPokemons()
+            .subscribe(function (pokemons) { return _this.pokemons = pokemons; });
     };
     PokemonSearchComponent.prototype.gotoDetail = function (pokemon) {
         var link = ['/pokemon', pokemon.id];
         this.router.navigate(link);
+    };
+    PokemonSearchComponent.prototype.selectPokemon = function (pokemon) {
+        var link = ['/pokemon', pokemon.id];
+        this.router.navigate(link);
+    };
+    PokemonSearchComponent.prototype.delete = function (pokemon) {
+        var _this = this;
+        this.pokemonsService.deletePokemon(pokemon)
+            .subscribe(function (_) { return _this.goBack(); });
+    };
+    PokemonSearchComponent.prototype.goBack = function () {
+        this.router.navigate(['/pokemon/all']);
     };
     PokemonSearchComponent = __decorate([
         core_1.Component({
